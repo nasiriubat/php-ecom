@@ -2,7 +2,8 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-$cid = intval($_GET['cid']);
+$price_range_min = intval($_GET['min_price']);
+$price_range_max = intval($_GET['max_price']);
 if (isset($_GET['action']) && $_GET['action'] == "add") {
 	$id = intval($_GET['id']);
 	if (isset($_SESSION['cart'][$id])) {
@@ -110,6 +111,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 				<div class='col-md-3 sidebar'>
 					<div class="" style="margin-bottom: 1rem;background:#f7f7f7;padding:1rem">
 						<?php include('includes/filter-section.php'); ?>
+
 					</div>
 					<!-- ================================== TOP NAVIGATION ================================== -->
 					<div class="side-menu animate-dropdown outer-bottom-xs">
@@ -119,7 +121,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 
 								<ul class="nav">
 									<li class="dropdown menu-item">
-										<?php $sql = mysqli_query($con, "select id,subcategory  from subcategory where categoryid='$cid'");
+										<?php $sql = mysqli_query($con, "select id,subcategory  from subcategory");
 
 										while ($row = mysqli_fetch_array($sql)) {
 										?>
@@ -169,38 +171,15 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 				<div class='col-md-9'>
 					<!-- ========================================== SECTION – HERO ========================================= -->
 
-					<div id="category" class="category-carousel hidden-xs">
-						<div class="item">
-							<div class="image">
-								<img src="assets/images/banners/cat-banner-1.jpg" alt="" class="img-responsive">
-							</div>
-							<div class="container-fluid">
-								<div class="caption vertical-top text-left">
-									<div class="big-text">
-										<br />
-									</div>
-
-									<?php $sql = mysqli_query($con, "select categoryName  from category where id='$cid'");
-									while ($row = mysqli_fetch_array($sql)) {
-									?>
-
-										<div class="excerpt hidden-sm hidden-md">
-											<?php echo htmlentities($row['categoryName']); ?>
-										</div>
-									<?php } ?>
-
-								</div><!-- /.caption -->
-							</div><!-- /.container-fluid -->
-						</div>
-					</div>
-
 					<div class="search-result-container">
 						<div id="myTabContent" class="tab-content">
 							<div class="tab-pane active " id="grid-container">
 								<div class="category-product  inner-top-vs">
 									<div class="row">
+
 										<?php
-										$ret = mysqli_query($con, "select * from products where category='$cid'");
+										// Split the price range into minimum and maximum prices
+										$ret = mysqli_query($con, "SELECT * FROM products WHERE productPrice >='$price_range_min'AND productPrice <= '$price_range_max'");
 										$num = mysqli_num_rows($ret);
 										if ($num > 0) {
 											while ($row = mysqli_fetch_array($ret)) { ?>
@@ -267,14 +246,6 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 										<?php } ?>
 
 
-
-
-
-
-
-
-
-
 									</div><!-- /.row -->
 								</div><!-- /.category-product -->
 
@@ -307,11 +278,11 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 	<script src="assets/js/bootstrap-select.min.js"></script>
 	<script src="assets/js/wow.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/shohag.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
 
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	<script src="assets/js/shohag.js"></script>
 
 	<script>
 		$(document).ready(function() {

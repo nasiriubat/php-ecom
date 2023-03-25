@@ -1,0 +1,30 @@
+.filter-top-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem 0 ;
+    background-color: #676767;
+    color: white;
+}
+
+.filter-top-user form input{
+    margin: 0;
+}
+
+.filter-input{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-input input{
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+}
+
+.filter-input input[type="submit"]{
+    background-color: #f0ad4e;
+    border: none !important;
+
+}
+
