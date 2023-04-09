@@ -9,14 +9,14 @@
         <div class="logo">
             <a href="index.php">
                 
-<h3>Shopping Portal</h3>
+<h3> e-Shopping </h3>
             </a>
         </div><!-- /.logo -->
     
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Nam libero tempore, cum soluta nobis est ses  eligendi optio cumque cum soluta nobis est ses  eligendi optio cumque.</p>
+        <p class="about-us"> Buy your desire products from our shop and stay stylish with comfort.</p>
     
         <div class="social-icons">
             
@@ -43,9 +43,8 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
-					<tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
-					<tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
+					<tr><td>Monday-Saturday:</td><td class="pull-right">10.00am To 08.00pm</td></tr>
+					<tr><td>Sunday:</td><td class="pull-right">Closed (Area based)</td></tr>
 				</tbody>
 			</table>
 		</div><!-- /.table-responsive -->
@@ -70,7 +69,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>New Delhi, Delhi</p>
+                    <p> Mirpur, Dhaka-1216, Bangladesh. </p>
                 </div>
             </li>
 
@@ -82,7 +81,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>(011) 000000000000<br>(011) 000000000000</p>
+                    <p>(+88) 0163 947 6263<br>(+88) 019 12345678</p>
                 </div>
             </li>
 
@@ -94,7 +93,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <span><a href="#">info@phpgurukul.com</a></span>
+                    <span><a href="#">info@e-shopping.com</a></span>
                 </div>
             </li>
               

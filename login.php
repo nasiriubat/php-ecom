@@ -70,7 +70,7 @@ exit();
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 
-	    <title>Shopping Portal | Signi-in | Signup</title>
+	    <title> e-Shopping | Signi-in | Signup </title>
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -217,7 +217,7 @@ echo htmlentities($_SESSION['errmsg']="");
 
 <div class="form-group">
 	    	<label class="info-title" for="contactno">Contact No. <span>*</span></label>
-	    	<input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" maxlength="10" required >
+	    	<input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" maxlength="15" required >
 	  	</div>
 
 <div class="form-group">
@@ -236,13 +236,13 @@ echo htmlentities($_SESSION['errmsg']="");
 	<span class="checkout-subtitle outer-top-xs">Sign Up Today And You'll Be Able To :  </span>
 	<div class="checkbox">
 	  	<label class="checkbox">
-		  	Speed your way through the checkout.
+		Speed your way through the checkout.
 		</label>
 		<label class="checkbox">
 		Track your orders easily.
 		</label>
 		<label class="checkbox">
- Keep a record of all your purchases.
+ 		Keep a record of all your purchases.
 		</label>
 	</div>
 </div>	

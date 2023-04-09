@@ -27,7 +27,7 @@ else{
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 
-	    <title>Shopping Portal | Payment Method</title>
+	    <title>e-Shopping | Payment Method</title>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -92,9 +92,7 @@ else{
 		<!-- panel-body  -->
 	    <div class="panel-body">
 	    <form name="payment" method="post">
-	    <input type="radio" name="paymethod" value="COD" checked="checked"> COD
-	     <input type="radio" name="paymethod" value="Internet Banking"> Internet Banking
-	     <input type="radio" name="paymethod" value="Debit / Credit card"> Debit / Credit card <br /><br />
+	    <input type="radio" name="paymethod" value="COD" checked="checked"> COD <br /><br />
 	     <input type="submit" value="submit" name="submit" class="btn btn-primary">
 	    	
 

@@ -1,4 +1,4 @@
-<div class="side-menu animate-dropdown outer-bottom-xs">
+<!-- <div class="side-menu animate-dropdown outer-bottom-xs">
     <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>        
     <nav class="yamm megamenu-horizontal" role="navigation">
   
@@ -14,5 +14,4 @@ while($row=mysqli_fetch_array($sql))
                         
 </li>
 </ul>
-    </nav>
-</div>
+    </nav> -->
