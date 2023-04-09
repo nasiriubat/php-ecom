@@ -83,6 +83,7 @@ header('location:my-wishlist.php');
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="stylesheet" href="assets/css/filter.css">
 
 		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 		<!--[if lt IE 9]>
@@ -110,6 +111,9 @@ header('location:my-wishlist.php');
 	<div class='container'>
 		<div class='row outer-bottom-sm'>
 			<div class='col-md-3 sidebar'>
+			<div class="" style="margin-bottom: 1rem;background:#f7f7f7;padding:1rem">
+						<?php include('includes/filter-section.php'); ?>
+					</div>
 	            <!-- ================================== TOP NAVIGATION ================================== -->
 <div class="side-menu animate-dropdown outer-bottom-xs">       
 <div class="side-menu animate-dropdown outer-bottom-xs">
@@ -218,7 +222,13 @@ while ($row=mysqli_fetch_array($ret))
 			
 		
 		<div class="product-info text-left">
-			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><?php echo htmlentities($row['productName']);?></a></h3>
+			<?php
+			$psize = '';
+			if(!empty($row['size'])){
+				$psize = ' - ( Size : '.$row['size'].' )';
+			}
+			?>
+			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><?php echo htmlentities($row['productName']).$psize;?></a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 
@@ -287,7 +297,7 @@ while ($row=mysqli_fetch_array($ret))
 
 			</div><!-- /.col -->
 		</div></div>
-		<?php include('includes/brands-slider.php');?>
+		
 
 </div>
 </div>
@@ -310,16 +320,17 @@ while ($row=mysqli_fetch_array($ret))
 
 	<!-- For demo purposes – can be removed on production -->
 	
-	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+	<!-- <script src="switchstylesheet/switchstylesheet.js"></script> -->
+	<script src="assets/js/shohag.js"></script>
+
 	<script>
-		$(document).ready(function(){ 
-			$(".changecolor").switchstylesheet( { seperator:"color"} );
-			$('.show-theme-options').click(function(){
-				$(this).parent().toggleClass('open');
-				return false;
-			});
-		});
+		// $(document).ready(function(){ 
+		// 	$(".changecolor").switchstylesheet( { seperator:"color"} );
+		// 	$('.show-theme-options').click(function(){
+		// 		$(this).parent().toggleClass('open');
+		// 		return false;
+		// 	});
+		// });
 
 		$(window).bind("load", function() {
 		   $('.show-theme-options').delay(2000).trigger('click');
