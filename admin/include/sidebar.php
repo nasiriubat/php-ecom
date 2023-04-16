@@ -74,6 +74,7 @@
 			<li><a href="top-buyers.php"><i class="menu-icon icon-tasks"></i>Top Buyers </a></li>
 			<li><a href="top-products.php"><i class="menu-icon icon-tasks"></i>Top Products </a></li>
 			<li><a href="stock.php"><i class="menu-icon icon-tasks"></i>Stock </a></li>
+			<li><a href="slider.php"><i class="menu-icon icon-tasks"></i>Manage Slider</a></li>
 			<li>
 				<a href="logout.php">
 					<i class="menu-icon icon-signout"></i>

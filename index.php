@@ -16,7 +16,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 			$message = "Product ID is invalid";
 		}
 	}
-	echo "<script>alert('Product has been added to the cart')</script>";
+	
 	echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 }
 
@@ -88,22 +88,30 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 					<div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
 						<!-- ========================================== SECTION – HERO ========================================= -->
+						<?php
+						$ret = mysqli_query($con, "select * from slider");
+						
 
-						<div id="hero" class="homepage-slider3">
-							<div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-								<div class="full-width-slider">
+						if (mysqli_num_rows($ret) > 0) {
+						?>
+							<div id="hero" class="homepage-slider3">
+								<div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+									<!-- <div class="full-width-slider">
 									<div class="item" style="background-image: url(assets/images/sliders/slider1.png);">
-										<!-- /.container-fluid -->
-									</div><!-- /.item -->
-								</div><!-- /.full-width-slider -->
-
-								<div class="full-width-slider">
-									<div class="item full-width-slider" style="background-image: url(assets/images/sliders/slider2.png);">
-									</div><!-- /.item -->
-								</div><!-- /.full-width-slider -->
-
-							</div><!-- /.owl-carousel -->
-						</div>
+										
+									</div>
+								</div> -->
+									<?php while ($row = mysqli_fetch_array($ret)) {
+										# code...
+									?>
+										<div class="full-width-slider">
+											<div class="item full-width-slider" style="background-image: url('admin/sliderImages/<?php echo $row['id'] . '/' . $row['image']  ?>');">
+											</div><!-- /.item -->
+										</div><!-- /.full-width-slider -->
+									<?php } ?>
+								</div><!-- /.owl-carousel -->
+							</div>
+						<?php } ?>
 
 						<!-- ========================================= SECTION – HERO : END ========================================= -->
 						<!-- ============================================== INFO BOXES ============================================== -->
@@ -178,11 +186,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 									$ret = mysqli_query($con, "select * from products");
 									while ($row = mysqli_fetch_array($ret)) {
 										# code...
-
-
 									?>
-
-
 										<div class="item item-carousel">
 											<div class="products">
 
@@ -545,7 +549,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 							</div><?php } ?>
 					</div>
 				</section>
-				 
+
 			</div>
 		</div>
 		<?php include('includes/footer.php'); ?>

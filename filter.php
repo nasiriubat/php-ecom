@@ -14,7 +14,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Product has been added to the cart')</script>";
+
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -179,8 +179,18 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 									<div class="row">
 
 										<?php
+
 										// Split the price range into minimum and maximum prices
-										$ret = mysqli_query($con, "SELECT * FROM products WHERE productPrice >='$price_range_min'AND productPrice <= '$price_range_max'");
+										if (($_SERVER['HTTP_REFERER'] == "http://localhost/shopping/search-result.php") && isset($_SESSION['search_product'])) {
+											$find = $_SESSION['search_product'];
+											$ret = mysqli_query($con, "SELECT * FROM products WHERE productPrice >='$price_range_min'AND productPrice <= '$price_range_max' AND productName like '$find'");
+										} elseif (isset($_SESSION['search_category_id']) && ($_SERVER['HTTP_REFERER'] == "http://localhost/shopping/category.php?cid=" . $_SESSION['search_category_id'])) {
+											$cid = $_SESSION['search_category_id'];
+											$sql = "SELECT * FROM products WHERE category = $cid AND productPrice >= $price_range_min AND productPrice <= $price_range_max";
+											$ret = mysqli_query($con, $sql);
+										} else {
+											$ret = mysqli_query($con, "SELECT * FROM products WHERE productPrice >='$price_range_min'AND productPrice <= '$price_range_max'");
+										}
 										$num = mysqli_num_rows($ret);
 										if ($num > 0) {
 											while ($row = mysqli_fetch_array($ret)) { ?>
@@ -265,7 +275,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 					</div><!-- /.col -->
 				</div>
 			</div>
-			 
+
 
 		</div>
 	</div>

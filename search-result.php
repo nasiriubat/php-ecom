@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 $find = "%{$_POST['product']}%";
+$_SESSION['search_product'] = $find;
 if (isset($_GET['action']) && $_GET['action'] == "add") {
 	$id = intval($_GET['id']);
 	if (isset($_SESSION['cart'][$id])) {
@@ -13,7 +14,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Product has been added to the cart')</script>";
+			
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -79,7 +80,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
-
+	<link rel="stylesheet" href="assets/css/filter.css">
 	<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 	<!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.js"></script>
@@ -108,6 +109,9 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 			<div class='row outer-bottom-sm'>
 				<div class='col-md-3 sidebar'>
 					<!-- ================================== TOP NAVIGATION ================================== -->
+					<div class="" style="margin-bottom: 1rem;background:#f7f7f7;padding:1rem">
+						<?php include('includes/filter-section.php'); ?>
+					</div>
 					<div class="side-menu animate-dropdown outer-bottom-xs">
 						<div class="side-menu animate-dropdown outer-bottom-xs">
 							<div class="head"><i class="icon fa fa-align-justify fa-fw"></i>Sub Categories</div>
@@ -210,7 +214,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 																	$psize = ' - ( Size : ' . $row['size'] . ' )';
 																}
 																?>
-																<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']).$psize; ?></a></h3>
+																<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']) . $psize; ?></a></h3>
 																<div class="rating rateit-small"></div>
 																<div class="description"></div>
 
@@ -281,7 +285,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 					</div><!-- /.col -->
 				</div>
 			</div>
-			 
+
 
 		</div>
 	</div>
@@ -305,7 +309,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 	<!-- For demo purposes – can be removed on production -->
 
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-
+	<script src="assets/js/shohag.js"></script>
 	<script>
 		$(document).ready(function() {
 			$(".changecolor").switchstylesheet({
