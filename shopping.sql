@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 09, 2023 at 10:28 AM
+-- Generation Time: Apr 16, 2023 at 04:49 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -185,6 +185,25 @@ INSERT INTO `products` (`id`, `category`, `subCategory`, `productName`, `product
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `slider`
+--
+
+CREATE TABLE `slider` (
+  `id` int NOT NULL,
+  `image` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `slider`
+--
+
+INSERT INTO `slider` (`id`, `image`) VALUES
+(14, 'free & easy.png'),
+(15, 'Untitled design (2).png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subcategory`
 --
 
@@ -242,7 +261,7 @@ INSERT INTO `userlog` (`id`, `userEmail`, `userip`, `loginTime`, `logout`, `stat
 (25, 'mdali1@example.com', 0x3a3a3100000000000000000000000000, '2023-04-09 08:51:09', '09-04-2023 02:21:23 PM', 1),
 (26, 'mdali1@example.com', 0x3a3a3100000000000000000000000000, '2023-04-09 09:42:39', NULL, 1),
 (27, 'mdali1@example.com', 0x3a3a3100000000000000000000000000, '2023-04-09 09:43:21', '09-04-2023 03:17:45 PM', 1),
-(28, 'mdali1@example.com', 0x3a3a3100000000000000000000000000, '2023-04-09 09:47:52', NULL, 1);
+(28, 'mdali1@example.com', 0x3a3a3100000000000000000000000000, '2023-04-09 09:47:52', '13-04-2023 11:28:55 AM', 1);
 
 -- --------------------------------------------------------
 
@@ -338,6 +357,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
@@ -400,6 +425,12 @@ ALTER TABLE `productreviews`
 --
 ALTER TABLE `products`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
