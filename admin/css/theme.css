@@ -1338,7 +1338,9 @@ border-top-left-radius: 3px;
 	border-color: #ddd
 }
 .dataTables_wrapper {
-	overflow: hidden
+	padding: 5px;
+	overflow: scroll;
+	overflow-y: hidden;
 }
 .dataTables_wrapper select, .dataTables_wrapper input, .dataTables_wrapper label {
 	margin: 0

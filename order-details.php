@@ -106,7 +106,7 @@ include('includes/config.php');
 										$ret = mysqli_query($con, "select * from orders where  email='$email' and id='$orderid'");
 										$num = mysqli_num_rows($ret);
 										if ($num > 0) {
-											$query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.id='$orderid' and orders.paymentMethod is not null");
+											$query = mysqli_query($con, "select products.id as cpid,products.productImage1 as pimg1,products.productName as pname,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.id='$orderid' and orders.paymentMethod is not null");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
 										?>
@@ -114,7 +114,7 @@ include('includes/config.php');
 													<td><?php echo $cnt; ?></td>
 													<td class="cart-image">
 														<a class="entry-thumbnail" href="detail.html">
-															<img src="admin/productimages/<?php echo $row['pname']; ?>/<?php echo $row['pimg1']; ?>" alt="" width="84" height="146">
+															<img src="admin/productimages/<?php echo $row['cpid']; ?>/<?php echo $row['pimg1']; ?>" alt="" width="84" height="146">
 														</a>
 													</td>
 													<td class="cart-product-name-info">

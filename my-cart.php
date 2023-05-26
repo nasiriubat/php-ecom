@@ -33,7 +33,6 @@ if (isset($_POST['ordersubmit'])) {
 	if (strlen($_SESSION['login']) == 0) {
 		header('location:login.php');
 	} else {
-
 		$quantity = $_POST['quantity'];
 		$pdd = $_SESSION['pid'];
 		$userID = $_SESSION['id'];
@@ -41,13 +40,11 @@ if (isset($_POST['ordersubmit'])) {
 		$value = array_combine($pdd, $quantity);
 		$email = $_SESSION['login'];
 
-
+		
 		foreach ($value as $qty => $val34) {
-
-
-
-			mysqli_query($con, "insert into orders(userId,productId,quantity,orderDate,paymentMethod,orderStatus,email) values('$userID','$qty','$val34','$date','COD','In Progress',$email)");
-
+			
+			mysqli_query($con, "insert into orders(userId,productId,quantity,orderDate,paymentMethod,orderStatus,email) values('".$userID."','".$qty."','".$val34."','".$date."','COD','In Progress','".$email."')");
+			
 			mysqli_query($con, "UPDATE products SET stock = stock - '$val34' WHERE id = '$qty'");
 
 			header('location:payment-method.php');
@@ -250,6 +247,7 @@ if (isset($_POST['shipupdate'])) {
 														</td>
 														<td class="cart-product-quantity">
 															<div class="quant-input">
+															<input type="hidden" value=<?php echo $row['stock'] ?>>
 																<div class="arrows">
 																	<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 																	<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>

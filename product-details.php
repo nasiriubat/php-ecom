@@ -12,7 +12,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			
+
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -297,7 +297,8 @@ if (isset($_POST['submit'])) {
 										$psize = ' - ( Size : ' . $row['size'] . ' )';
 									}
 									?>
-									<h1 class="name"><?php echo htmlentities($row['productName']).$psize; ?></h1>
+									<h1 class="name"><?php echo htmlentities($row['productName']) . $psize; ?></h1>
+									<div class="badge badge-primary" style="color:blank">Stock : <span id="pstock"><?php echo htmlentities($row['stock']); ?></span></div>
 									<?php $rt = mysqli_query($con, "select * from productreviews where productId='$pid'");
 									$num = mysqli_num_rows($rt); {
 									?>
@@ -410,6 +411,7 @@ if (isset($_POST['submit'])) {
 											<div class="col-sm-2">
 												<div class="cart-quantity">
 													<div class="quant-input">
+														<input type="hidden" value=<?php echo $row['stock'] ?>>
 														<div class="arrows">
 															<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 															<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
@@ -658,7 +660,7 @@ if (isset($_POST['submit'])) {
 	</div><!-- /.col -->
 	<div class="clearfix"></div>
 	</div>
-	 
+
 	</div>
 	</div>
 	<?php include('includes/footer.php'); ?>

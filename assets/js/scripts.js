@@ -371,10 +371,15 @@
 
     $('.quant-input .plus').click(function () {
         var val = $(this).parent().next().val();
-        if (val < 5) {
+        var pstock = $(this).parent().prev().val();
+
+        if (val >= parseInt(pstock)) {
+            alert('Maximum order quantity for this item is ' + pstock + '.')
+        }
+        else if (val < 15) {
             val = parseInt(val) + 1;
             $(this).parent().next().val(val);
-        }else{
+        } else {
             alert('Maximum order quantity for a single item is 5.')
         }
     });
@@ -383,7 +388,7 @@
         if (val > 1) {
             val = parseInt(val) - 1;
             $(this).parent().next().val(val);
-        }else{
+        } else {
             alert('Minimum order quantity is 1.')
         }
     });

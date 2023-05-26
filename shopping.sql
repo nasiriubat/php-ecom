@@ -190,8 +190,8 @@ INSERT INTO `products` (`id`, `category`, `subCategory`, `productName`, `product
 
 CREATE TABLE `slider` (
   `id` int NOT NULL,
-  `image` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `slider`
